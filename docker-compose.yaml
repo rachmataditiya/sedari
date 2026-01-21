@@ -1,0 +1,19 @@
+services:
+  sedari:
+    build: .
+    container_name: sedari
+    restart: unless-stopped
+    environment:
+      - VIRTUAL_HOST=sedari.stoptipu.com
+      - VIRTUAL_PORT=80
+      - LETSENCRYPT_HOST=sedari.stoptipu.com
+      - LETSENCRYPT_EMAIL=admin@arkana.my
+    expose:
+      - "80"
+    networks:
+      - proxy
+
+networks:
+  proxy:
+    external: true
+    name: proxy
