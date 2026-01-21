@@ -136,6 +136,8 @@
         <a href="itms-services://?action=download-manifest&url=https://radit.tun.arkana.app/manifest.plist" class="install-button">
             Install Aplikasi
         </a>
+        
+        <div class="warning" id="warning-message" style="display: none;"></div>
     </div>
     
     <script>
@@ -143,9 +145,11 @@
         const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
         const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
         
-        if (!isIOS) {
-            document.querySelector('.warning').innerHTML = 
+        const warningElement = document.querySelector('.warning');
+        if (!isIOS && warningElement) {
+            warningElement.innerHTML = 
                 '<strong>⚠️ Perhatian:</strong><br>Halaman ini hanya dapat digunakan di Safari pada perangkat iOS (iPhone/iPad).';
+            warningElement.style.display = 'block';
         }
     </script>
 </body>
